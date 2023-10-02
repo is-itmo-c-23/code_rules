@@ -11,17 +11,17 @@
 ### 1) Не объявляйте переменные в одну строку, это выглядит некрасиво и ухудшает читаемость кода
 
 **Вот так делать плохо**
-```
+```C++
 int one = 1; int zero = 0;
 ```
 
 **Вот так делать очень плохо**
-```
+```C++
 int one = 1, zero = 2;
 ```
 
 **Вот так хорошо:**
-```
+```C++
 int one = 1;
 int zero = 0;
 ```
@@ -32,7 +32,7 @@ int zero = 0;
 `else` на одной строке с закрывающей
 
 **Вот так неправильно**
-```
+```C++
 if (true) {
     ...;
 } 
@@ -49,7 +49,7 @@ while (true) {
 ```
 
 **Вот так правильно**
-```
+```C++
 if (true) {
     ...;
 } else if (false) {
@@ -65,7 +65,7 @@ while (true) {
 ### 3) Пробелы после `if`, `else`, `for`, `while` и перед `else`. Пробел перед `{` и после `}`
 
 **Вот так неправильно:**
-```
+```C++
 if(true){
     ...;
 }else if(false){
@@ -74,7 +74,7 @@ if(true){
 ```
 
 **Вот так хорошо:**
-```
+```C++
 if (true) {
     ...;
 } else if (false) {
@@ -88,14 +88,14 @@ if (true) {
 Пример операторов - -=, +=, *=, |=, &=, ...(это не оператор), <, >=, ==, ..., <<, >>, &&, ||, ...
 
 **Вот так неправильно:**
-```
+```C++
 for (size_t i=0; i<10; i++) {
     ...;
 }
 ```
 
 **Вот так правильно:**
-```
+```C++
 for (size_t i = 0; i < 10; i++) {
     ...;
 }
@@ -104,14 +104,14 @@ for (size_t i = 0; i < 10; i++) {
 После оператора `!` пробел не ставится
 
 **Вот так неправильно:**
-```
+```C++
 if ( ! (10 > 20) ) {
     ...;
 }
 ```
 
 **Вот так правильно:**
-```
+```C++
 if (!(10 > 20)) {
     ...;
 }
@@ -119,14 +119,14 @@ if (!(10 > 20)) {
 ### 5) После `;`, если это не конец строки, ставится пробел
 
 **Вот так неправильно:**
-```
+```C++
 for (size_t i = 0;i < 10;i++) {
     ...;
 }
 ```
 
 **Вот так правильно:**
-```
+```C++
 for (size_t i = 0; i < 10; i++) {
     ...;
 }
@@ -136,12 +136,12 @@ for (size_t i = 0; i < 10; i++) {
 Перед и после параметра пробел не нужен
 
 **Неправильно:**
-```
+```C++
 std::vector < std::string > vctr;
 ```
 
 **Правильно:**
-```
+```C++
 std::vector<std::string> vctr;
 ```
 ### 7) Порядок инклудов
@@ -162,7 +162,7 @@ std::vector<std::string> vctr;
 После последнего блока инклудов пустая строка
 
 **Вот так неправильно:**
-```
+```C++
 #include <queue>
 #include <bitset>
 #include "number.h"
@@ -176,7 +176,7 @@ int main() {
 ```
 
 **Вот так правильно:**
-```
+```C++
 #include "a_file_in_my_project.h"
 #include "number.h"
 
@@ -197,7 +197,7 @@ int main() {
 В `main` `return 0` можно опускать
 
 **Вот так неправильно:**
-```
+```C++
 int main() {
    if (true) {
 
@@ -209,7 +209,7 @@ int main() {
 ```
 
 **Вот так правильно:**
-```
+```C++
 int main() {
     if (true) {
         return 0;
@@ -223,7 +223,7 @@ int main() {
 Пока что вам так делать нельзя, если будет можно, то объявлю
 
 **Вот так неправильно:**
-```
+```C++
 #include <string>
 
 using namespace std;
@@ -234,7 +234,7 @@ int main() {
 ```
 
 **Вот так правильно:**
-```
+```C++
 #include <string>
 
 int main() {
@@ -248,12 +248,12 @@ int main() {
 Названия функций также должны содержать в себе глагол
 
 **Плохо:**
-```
+```C++
 void ParserOfArguments();
 ```
 
 **Хорошо:**
-```
+```C++
 void ParseArguments();
 ```
 
@@ -262,12 +262,12 @@ void ParseArguments();
 Не используйте библиотеки языка Си (они заканчиваются на .h). Используйте плюсовые аналоги, у них такой же название, только без `.h` в конце и с `c` в начале
 
 **Плохо:**
-```
+```C++
 #include <math.h>
 ```
 
 **Хорошо:**
-```
+```C++
 #include <cmath>
 ```
 ### 12) Между функциями делайте 1 пустую строку
@@ -283,14 +283,14 @@ void ParseArguments();
 https://stackoverflow.com/questions/2627166/what-is-the-difference-between-a-const-reference-and-normal-parameter
 
 **Плохо:**
-```
+```C++
 void printString(std::string str) {
     std::cout << str << std::endl;
 }
 ```
 
 **Хорошо:**
-```
+```C++
 void printString(const std::string& str) {
     std::cout << str << std::endl;
 }
@@ -298,7 +298,7 @@ void printString(const std::string& str) {
 ### 15) `&` и `*`(указатель) относится к типу, она должна быть справа от типа без пробела
 
 **Плохо:**
-```
+```C++
 void printFunction(const std::string &str)
 void printFunction(const std::string & str)
 
@@ -307,7 +307,7 @@ void printFunction(const char * str)
 ```
 
 **Хорошо:**
-```
+```C++
 void printFunction(const std::string& str)
 void printFunction(const char* str)
 ```
@@ -321,21 +321,21 @@ void printFunction(const char* str)
 
 **Очень плохо:**
 Вообще не кастить и полагаться на неявное приведение типов
-```
+```C++
 char ch = 'a';
 uint64_t ch_uint = ch;
 ```
 
 **Плохо:**
 Использовать Си стайл каст:
-```
+```C++
 char ch = 'a';
 uint64_t ch_uint = (char)ch;
 ```
 
 **Хорошо:**
 Использовать `static_cast`
-```
+```C++
 char ch = 'a';
 uint64_t ch_uint = static_cast<uint64_t>(ch);
 ```
@@ -347,7 +347,7 @@ uint64_t ch_uint = static_cast<uint64_t>(ch);
 Такие числа стоит выносить в константы
 
 **Очень плохо:**
-```
+```C++
 void someFunction() {
     for (uint8_t i = 65; i <= 90; i++) {
         std::cout << static_cast<char>(i) << " ";   
@@ -358,7 +358,7 @@ void someFunction() {
 Сложно сразу понять что функция делает
 
 **Хорошо:**
-```
+```C++
 const uint8_t ASCII_SYMBOL_CODE_UPPER_A = 65;
 const uint8_t ASCII_SYMBOL_CODE_UPPER_Z = 90;
     
@@ -378,7 +378,7 @@ void someFunction() {
 Имена констант начинаются с буквы `k`. `Далее PascalCase` - ЭтоКогдаПишемВотТак
 
 **Плохо:**
-```
+```C++
 int64_t zeroNumber = 0;
 
 int64_5 addZero(int64_t number) {
@@ -387,7 +387,7 @@ int64_5 addZero(int64_t number) {
 ```
 
 **Хорошо:**
-```
+```C++
 const int64_t kZeroNumber = 0;
 
 int64_5 addZero(int64_t number) {
