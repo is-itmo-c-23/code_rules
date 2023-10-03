@@ -7,6 +7,8 @@
 ### 1. Общие правила
 
 + Название переменной должно отражать смысл этой переменной
++ Название не должно быть слишком коротким или слишком длинным
++ Название должно нести в себе достаточно информации для того, чтобы в текущем контексте можно было понять, что делает (за что отвечает) сущность названная таким образом
 + Сокращения это зачастую плохо
 
 ```C++
@@ -48,7 +50,7 @@ const char* kLongDelimiterArgument = "--delimiter"; // хорошо
 ### 4. Функции и методы
 
 + Функции и методы должны называться в `PascalCase`([google](https://google.github.io/styleguide/cppguide.html#Function_Names))
-+ Имя функции(метода) должно содержать глагол и не должно быть существительным
++ Имя функции (метода) должно содержать глагол и не должно быть существительным
 
 ```C++
 Options Parsing(int argc, char** argv) { 
@@ -59,4 +61,43 @@ Options ParseArguments(int argc, char** argv) {
   // хорошо
 }
 ```
+
+### 5. Структуры и классы
+
++ Структуры и классы должны называться в `PascalCase`([google](https://google.github.io/styleguide/cppguide.html#Type_Names))
++ Имя структуры (класса) должно быть существительным и должно описывать объект, а не процесс
+
+```C++
+struct Parse {
+  // плохо
+}
+
+struct Parsing {
+  // плохо
+}
+
+struct ParseOptions {
+  // хорошо
+}
+```
+
+### 6. Перечисления
+
++ Для перечислений лучше использовать `enum class`, а не просто `enum` ([SOF](https://stackoverflow.com/questions/18335861/why-is-enum-class-preferred-over-plain-enum))
++ Каждый элемент перечисления должен именоваться также, как и константа. Само перечисление именуется также, как и структура
+
+```C++
+enum class error_code { // плохо
+  NO_FILENAME,
+  nofilename,
+  no_filename,
+};
+
+enum class ErrorCode { // хорошо
+  kNoFilename,
+  kIncorrectDelimiter,
+  kIncorrectLinesNumber,
+};
+``` 
+
 
