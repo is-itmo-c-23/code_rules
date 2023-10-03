@@ -43,13 +43,13 @@ if (is_working) // хорошо, читается как обычный текс
 Константы называем в `PascalCase` с префиксом `k` ([google](https://google.github.io/styleguide/cppguide.html#Constant_Names))
 
 ```C++
-const char* LONG_DELIMITER_ARGUMENT = "--delimiter"; // плохо, нару
+const char* LONG_DELIMITER_ARGUMENT = "--delimiter"; // плохо
 const char* kLongDelimiterArgument = "--delimiter"; // хорошо
 ```
 
 ### 4. Функции и методы
 
-+ Функции и методы должны называться в `PascalCase`([google](https://google.github.io/styleguide/cppguide.html#Function_Names))
++ Функции и методы должны называться в `PascalCase` ([google](https://google.github.io/styleguide/cppguide.html#Function_Names))
 + Имя функции (метода) должно содержать глагол и не должно быть существительным
 
 ```C++
@@ -62,9 +62,11 @@ Options ParseArguments(int argc, char** argv) {
 }
 ```
 
++ Функции, возвращающие `bool`, лучше называть с префиксом `Is`, `Can`, `Have` и т.п. по аналогии с переменными.
+
 ### 5. Структуры и классы
 
-+ Структуры и классы должны называться в `PascalCase`([google](https://google.github.io/styleguide/cppguide.html#Type_Names))
++ Структуры и классы должны называться в `PascalCase` ([google](https://google.github.io/styleguide/cppguide.html#Type_Names))
 + Имя структуры (класса) должно быть существительным и должно описывать объект, а не процесс
 
 ```C++
@@ -100,4 +102,22 @@ enum class ErrorCode { // хорошо
 };
 ``` 
 
+### 7. Магические константы
 
+Не используйте в коде числа (а также строки и т.д.), если нельзя __очень просто__ понять что они значат. Их стоит выносить в константы.
+
+```C++
+for (uint8_t i = 65; i <= 90; i++) { // плохо
+    std::cout << static_cast<char>(i) << " ";   
+}
+
+// хорошо
+const uint8_t ASCII_CODE_UPPER_A = 65;
+const uint8_t ASCII_CODE_UPPER_Z = 90;
+    
+for (uint8_t i = ASCII_CODE_UPPER_A; i <= ASCII_CODE_UPPER_Z; i++) {
+    std::cout << static_cast<char>(i) << " ";   
+}
+```
+
+Во втором примере сразу понятно, что мы выводим в одну строку через пробел все большие буквы английского алфавита.
