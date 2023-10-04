@@ -2,7 +2,7 @@
 
 + [Нейминг](./docs/Naming.md)
 + [Форматирование](./docs/Formatting.md)
-+ [Тонкости языков](./docs/Language.md)
++ [Хорошие и плохие решения. Примеры](./docs/BestPractices.md)
 
 ## Дополнительно
 
