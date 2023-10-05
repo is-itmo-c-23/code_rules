@@ -165,21 +165,21 @@ void sum(int a, int b, int& result) {
 }
  
 int main() {
-  int a = 3;
-  int b = 4;
-  int result = 0;
-  sum(a, b, result); // result = 7
+    int a = 3;
+    int b = 4;
+    int result = 0;
+    sum(a, b, result); // result = 7
 }
  
 // 2 способ
 int sum(int a, int b) {
-	return a + b;
+    return a + b;
 }
  
 int main() {
-  int a = 3;
-  int b = 4;
-  int result = sum(a, b);
+    int a = 3;
+    int b = 4;
+    int result = sum(a, b);
 }
 ```
 
@@ -187,20 +187,20 @@ int main() {
 
 ```C++
 void ParseArguments(int argc, char** argv, bool& is_tail, size_t& lines, char& delimiter, const char* filename) {
-	for (int i = 1; i < argc; ++i) {
-		if (...) {
-			is_tail = true;
-		} else if (...) {
-		    // и так далее
-		}
-	}
+    for (int i = 1; i < argc; ++i) {
+        if (...) {
+            is_tail = true;
+        } else if (...) {
+            // и так далее
+        }
+    }
 }
  
 void main(int argc, char** argv) {
-	bool is_tail = false;
-	size_t lines = 0;
-	...
-	ParseArguments(argc, argv, is_tail, lines, delimiter, filename);
+    bool is_tail = false;
+    size_t lines = 0;
+    ...
+    ParseArguments(argc, argv, is_tail, lines, delimiter, filename);
 }
 ```
 
@@ -209,25 +209,25 @@ void main(int argc, char** argv) {
 
 ```C++
 struct Arguments {
-	std::size_t lines = 0;
-	const char* filename = nullptr;
-	bool is_tail = false;
-	char delimiter = '\n';
+    size_t lines = 0;
+    const char* filename = nullptr;
+    bool is_tail = false;
+    char delimiter = '\n';
 }; 
  
 Arguments Parse(int argc, char** argv) {
-	Arguments arguments;
+    Arguments arguments;
+    for (int i = 1; i < argc; ++i) {
+        ...
+    }
 
-	for (int i = 1; i < argc; ++i) {
-		...
-	}
- 
-	return arguments;
+    return arguments;
 }
  
 int main(int argc, char** argv) {
-	Arguments arguments = Parse(argc, argv);
-	...
+    Arguments arguments = Parse(argc, argv);
+    ...
 }
 ```
+
 Такая реализация уже гораздо лучше: если мы захотим добавить новый аргумент, то сделать это будет нетрудно.
