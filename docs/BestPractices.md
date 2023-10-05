@@ -153,3 +153,81 @@ if (!IsStringCorrect(arguments[i])) {
 + Внутри функции можно использовать сокращения (`std::size_t len = std::strlen(argument)`), чтобы не писать одно и то же, а также чтобы сделать строчку короче.
 + Функция очень короткая и можно достаточно легко понять, что она делает.
 + Эту функцию можно удобно переиспользовать в других частях кода и с другим аргументом в отличие от предыдущих двух вариантов, где бы пришлось копировать код и переписывать имя аргумента.
+
+### 9. void функции
+ 
+Представим ситуацию: студенту нужно написать функцию, которая должна подсчитать сумму двух чисел. Рассмотрим два способа реализации этой функции.
+ 
+```C++
+// 1 способ
+void sum(int a, int b, int& result) {
+    result = a + b;
+}
+ 
+int main() {
+  int a = 3;
+  int b = 4;
+  int result = 0;
+  sum(a, b, result); // result = 7
+}
+ 
+// 2 способ
+int sum(int a, int b) {
+	return a + b;
+}
+ 
+int main() {
+  int a = 3;
+  int b = 4;
+  int result = sum(a, b);
+}
+```
+
+Возможно, здесь многим очевидно, что второй способ интуитивнее и выглядит лучше, но если дело доходит до момента, когда функция должна принимать несколько переменных, то многие сразу начинают делать вот так:
+
+```C++
+void ParseArguments(int argc, char** argv, bool& is_tail, size_t& lines, char& delimiter, const char* filename) {
+	for (int i = 1; i < argc; ++i) {
+		if (...) {
+			is_tail = true;
+		} else if (...) {
+		    // и так далее
+		}
+	}
+}
+ 
+void main(int argc, char** argv) {
+	bool is_tail = false;
+	size_t lines = 0;
+	...
+	ParseArguments(argc, argv, is_tail, lines, delimiter, filename);
+}
+```
+
+Видно, что так делать не особо приятно, так как если у нас добавится новый аргумент, то придется изменять код сразу в нескольких местах.
+Теперь рассмотрим правильный подход к решению этой проблемы.
+
+```C++
+struct Arguments {
+	std::size_t lines = 0;
+	const char* filename = nullptr;
+	bool is_tail = false;
+	char delimiter = '\n';
+}; 
+ 
+Arguments Parse(int argc, char** argv) {
+	Arguments arguments;
+
+	for (int i = 1; i < argc; ++i) {
+		...
+	}
+ 
+	return arguments;
+}
+ 
+int main(int argc, char** argv) {
+	Arguments arguments = Parse(argc, argv);
+	...
+}
+```
+Такая реализация уже гораздо лучше: если мы захотим добавить новый аргумент, то сделать это будет нетрудно.
