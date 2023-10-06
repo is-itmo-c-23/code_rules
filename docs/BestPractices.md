@@ -231,3 +231,19 @@ int main(int argc, char** argv) {
 ```
 
 Такая реализация уже гораздо лучше: если мы захотим добавить новый аргумент, то сделать это будет нетрудно.
+
+### 9. Вывод ошибко в консоль
+
+Считается хорошей практикой выводить ошибки в консоль в поток [`std::cerr`](https://en.cppreference.com/w/cpp/io/cerr)
+
+```C++
+// плохо
+if (!file.is_open()) {
+    std::cout << "Cannot open file\n";
+}
+
+// хорошо
+if (!file.is_open()) {
+    std::cerr << "Cannot open file\n";
+}
+```
