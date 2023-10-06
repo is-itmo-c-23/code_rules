@@ -191,3 +191,32 @@ std::vector < std::string > values; // плохо
 
 std::vector<std::string> values; // хорошо
 ```
+
+### 8. Функция `main` 
+
+В `main` мы только принимаем данные, а не занимаемся и обработкой. 
+Обработка данных и работа с ними - не задача `main`. 
+```c++
+// плохо
+int main(int argc, char** argv){
+    Arguments args;
+
+    for (int i = 1; i < argc; ++i) {
+        ...
+    }
+    ...
+    ...
+
+    if (...) {
+        PrintFile(args);
+    }
+    ...
+    return 0;
+
+// хорошо
+int main(int argc, char** argv) {
+    Arguments args = ParseArguments(argc, argv);
+    PrintFile(args);
+    return 0;
+}
+```
