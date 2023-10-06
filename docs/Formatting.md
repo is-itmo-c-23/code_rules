@@ -220,3 +220,15 @@ int main(int argc, char** argv) {
     return 0;
 }
 ```
+
+### 9. And, or, not
+
+Хоть в `c++` и появилась возможность писать `and, or, not`, но все же уже принято писать `&&, ||, !`
+
+```c++
+// плохо
+if (not tail and lines > 0) {...}
+
+// хорошо
+if (!tail && lines > 0) {...}
+```
