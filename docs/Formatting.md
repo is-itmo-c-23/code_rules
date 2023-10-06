@@ -194,11 +194,11 @@ std::vector<std::string> values; // хорошо
 
 ### 8. Функция `main` 
 
-В `main` мы только принимаем данные, а не занимаемся и обработкой. 
-Обработка данных и работа с ними - не задача `main`. 
-```c++
+В `main` мы только принимаем данные, а не занимаемся их обработкой. Работа с данными -- это задача других функций.
+
+```C++
 // плохо
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
     Arguments args;
 
     for (int i = 1; i < argc; ++i) {
@@ -211,24 +211,29 @@ int main(int argc, char** argv){
         PrintFile(args);
     }
     ...
-    return 0;
+    return EXIT_SUCCESS;
+}
 
 // хорошо
 int main(int argc, char** argv) {
     Arguments args = ParseArguments(argc, argv);
     PrintFile(args);
-    return 0;
+    return EXIT_SUCCESS;
 }
 ```
 
-### 9. And, or, not
+### 9. and, or, not
 
-Хоть в `c++` и появилась возможность писать `and, or, not`, но все же уже принято писать `&&, ||, !`
+Хоть в С++ и появилась возможность писать `and`, `or`, `not`, но все же принято использовать `&&`, `||`, `!`.
 
-```c++
+```C++
 // плохо
-if (not tail and lines > 0) {...}
+if (not tail and lines > 0) {
+    ...
+}
 
 // хорошо
-if (!tail && lines > 0) {...}
+if (!tail && lines > 0) {
+    ...
+}
 ```
