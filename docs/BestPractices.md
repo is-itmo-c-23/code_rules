@@ -267,6 +267,6 @@ std::string MakeFormatted(const std::string& s) {
 ```c++
 std::string MakeFormatted(std::string s) {
     s = "Value of string: " + s;
-    return copy;
+    return s;
 }
 ```
