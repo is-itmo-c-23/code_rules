@@ -119,6 +119,16 @@ int f (int b) {} {
   int a = 42;
   return a + b; // хорошо 
 }
+
+//Также:
+int g(int a, int b){
+
+    return a*b;
+} // плохо
+
+int g(int a, int b){
+    return a*b; // хорошо
+}
 ```
 
 ### 6. Расположение `&` и `*`
