@@ -250,3 +250,24 @@ if (!tail && lines > 0) {
 ### 10. Закомментированный код
 
 В Вашем коде не должно быть закомментированных строк кода - удаляйте их перед отправкой своего пулл-реквеста на код-ревью. 
+
+### 11. Неймспейсы
+
+Оформление неймспейсов в вашем в коде должно быть следующим:
+
+```c++
+namespace MyNamespace {
+
+class MyClass {
+public:
+	int value = 42;
+	void GetValue() const { return value; }
+private:
+	int val_;
+}
+
+void SomeFunc() { ... }
+
+} // MyNamespace
+```
+
