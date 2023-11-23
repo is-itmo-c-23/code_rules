@@ -146,46 +146,50 @@ void printFunction(const std::string& str) // хорошо
 void printFunction(const char* str) // хорошо
 ```
 
-### 6. Порядок инклудов
+### 6. Порядок инклюдов
 
-Инклуды (`#include ...`) должны быть отсортированы вот в таком порядке:
+Инклюды (`#include ...`) должны быть отсортированы в следующем порядке:
 
-1. Сначала идет блок инклудов вашей программы
-2. Затем идет блок инклудов библиотек не из стандартной библиотеки
-3. Затем идет блок инклудов стандартной библиотеки
+0. *Если данный файл реализовывает вещи, описанные в каких-то заголовках, то сначала идет блок из этих заголовков*
+1. Блок инклюдов стандартной библиотеки
+2. Блок инклюдов библиотек не из стандартной библиотеки
+3. Блок инклюдов вашей программы
 
 Следует придерживаться таких правил:
 
-+ В каждом блоке инклуды отсортированы в лексикографическом порядке
++ В каждом блоке инклюды отсортированы в лексикографическом порядке
 + Между блоками должна быть пустая строка
-+ После последнего блока инклудов должна быть пустая строка
-+ Инклуды файлов вашей программы должны быть с двойными кавычками `#include "file.h"`
-+ Инклуды из стандартной библиотеки должны быть с треугольными скобками `#include <iostream>`
++ После последнего блока инклюдов должна быть пустая строка
++ Инклюды файлов вашей программы должны быть с двойными кавычками `#include "file.h"`
++ Инклюды из стандартной библиотеки должны быть с треугольными скобками `#include <iostream>`
 
 Подробнее можно про читать [тут](https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes).
 
 ```C++ 
 // плохо
-#include <queue>
-#include <bitset>
 #include "number.h"
 
-#include "a_file_in_my_project.h"
-#include "b_common_lib_in_my_company.h"
+#include "corresponding_header.h"
+
 #include "a_common_lib_in_my_company.h"
+#include "b_common_lib_in_my_company.h"
+#include <queue>
+#include <bitset>
+
 int main() {
     return 0;
 }
 
 // хорошо
-#include "a_file_in_my_project.h"
-#include "number.h"
-
-#include "a_common_lib_in_my_company.h"
-#include "b_common_lib_in_my_company.h"
+#include "corresponding_header.h"
 
 #include <queue>
 #include <bitset>
+
+#include "b_common_lib_in_my_company.h"
+#include "a_common_lib_in_my_company.h"
+
+#include "number.h"
 
 int main() {
     return 0;
