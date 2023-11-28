@@ -186,8 +186,8 @@ int main() {
 #include <queue>
 #include <bitset>
 
-#include "b_common_lib_in_my_company.h"
 #include "a_common_lib_in_my_company.h"
+#include "b_common_lib_in_my_company.h"
 
 #include "number.h"
 
